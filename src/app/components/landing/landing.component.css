@@ -1,0 +1,23 @@
+/* Styles for the Hero Section */
+.hero-container {
+  background-image: url('https://img.freepik.com/free-vector/sky-background-video-conferencing_23-2148623068.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card {
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 10px; 
+  padding: 2rem;
+}
+
+@media (max-width: 767.98px) {
+  .card {
+    padding: 1rem;
+  }
+}

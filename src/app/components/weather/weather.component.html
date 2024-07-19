@@ -1,0 +1,62 @@
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-6 offset-md-3">
+      <div class="card">
+        <div class="card-body">
+          <h1 class="card-title text-center">Weather Information</h1>
+          
+          <div class="form-group">
+            <label for="city">Enter City Name</label>
+            <input 
+              id="city" 
+              type="text" 
+              class="form-control" 
+              [(ngModel)]="city" 
+              placeholder="Enter city name"
+            />
+          </div>
+          
+          <button 
+            class="btn btn-primary btn-block mt-3" 
+            (click)="searchWeather()"
+          >
+            <i class="fas fa-search"></i> Get Weather
+          </button>
+          
+          <div *ngIf="weatherData" class="mt-4">
+            <h2 class="text-center">Weather for {{ displayCity }}</h2>
+            <ul class="list-group">
+              <li class="list-group-item">
+                <i class="fas fa-thermometer-half"></i>
+                <strong>Temperature:</strong> {{ weatherData.current.temperature_2m }} °C
+              </li>
+              <li class="list-group-item">
+                <i class="fas fa-tachometer-alt"></i>
+                <strong>Humidity:</strong> {{ weatherData.current.relative_humidity_2m }}%
+              </li>
+              <li class="list-group-item">
+                <i class="fas fa-wind"></i>
+                <strong>Wind Speed:</strong> {{ weatherData.current.wind_speed_10m }} km/h
+              </li>
+            </ul>
+
+            <button 
+              class="btn btn-success btn-block mt-3" 
+              (click)="saveWeather()"
+            >
+              <i class="fas fa-save"></i> Save Weather
+            </button>
+          </div>
+          
+          <div *ngIf="validationError" class="alert alert-warning mt-3">
+            <i class="fas fa-exclamation-triangle"></i> {{ validationError }}
+          </div>
+          
+          <div *ngIf="error" class="alert alert-danger mt-3">
+            <i class="fas fa-exclamation-circle"></i> {{ error }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

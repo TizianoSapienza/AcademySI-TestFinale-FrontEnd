@@ -1,0 +1,36 @@
+<nav class="navbar navbar-expand-lg bg-dark sticky-top shadow-lg" style="border-bottom: 1px solid royalblue;">
+  <div class="container-fluid">
+    <a class="navbar-brand text-white font-monospace d-flex align-items-center" routerLink="/">
+      <img src="clouds-and-sun.png" alt="logo" height="40" class="me-2">
+      <p class="mb-0">Weather App</p>
+    </a>
+
+    <span *ngIf="email" class="text-white ms-3">Welcome back, {{ email }}</span>
+
+    <button class="navbar-toggler bg-light" type="button" data-bs-toggle="collapse" 
+      data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" 
+      aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse font-monospace" id="navbarNavDropdown">
+      <ul class="navbar-nav ms-auto fw-semibold">
+        <li class="nav-item">
+          <a class="nav-link text-light letter-spacing-sm" aria-current="page" routerLink="">HOME</a>
+        </li>
+        <li *ngIf="!email" class="nav-item">
+          <a class="nav-link text-light rounded-3 letter-spacing-sm" routerLink="/register">SIGN UP</a>
+        </li>
+        <li *ngIf="!email" class="nav-item">
+          <a class="nav-link text-light rounded-3 letter-spacing-sm" routerLink="/login">SIGN IN</a>
+        </li>
+        <li *ngIf="email" class="nav-item">
+          <a class="nav-link text-light letter-spacing-sm" aria-current="page" routerLink="/weather">SEARCH</a>
+        </li>
+        <li *ngIf="email" class="nav-item">
+          <a class="nav-link text-light rounded-3 letter-spacing-sm" routerLink="#" (click)="logout()">LOGOUT</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

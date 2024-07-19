@@ -1,0 +1,27 @@
+.password-strength {
+  font-weight: bold;
+  margin-top: 0.5rem;
+}
+
+.password-strength.weak {
+  color: red;
+}
+
+.password-strength.moderate {
+  color: orange;
+}
+
+.password-strength.strong {
+  color: green;
+}
+
+.hero-container {
+  background-image: url('https://img.freepik.com/free-vector/sky-background-video-conferencing_23-2148623068.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
