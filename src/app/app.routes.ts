@@ -6,8 +6,8 @@ import { LandingComponent } from './components/landing/landing.component';
 import { AuthGuard } from '../guards/Auth-guard';
 
 export const routes: Routes = [
-  {path: '', component: LandingComponent},
-  {path: 'login', component: LoginFormComponent, title: 'Weather | Login'},
-  {path: 'register', component: RegisterFormComponent, title: 'Weather | Register'},
-  {path: 'weather', component: WeatherComponent, title: 'Weather | Weather', canActivate: [AuthGuard]},
+  {path: '', component: LandingComponent, title: 'Weather App | Home'},
+  {path: 'login', component: LoginFormComponent, title: 'Weather App | Login'},
+  {path: 'register', component: RegisterFormComponent, title: 'Weather App | Register'},
+  {path: 'weather', component: WeatherComponent, title: 'Weather App | Search', canActivate: [AuthGuard]},
 ];

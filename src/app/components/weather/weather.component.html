@@ -11,9 +11,11 @@
               <input id="city" type="text" class="form-control" [(ngModel)]="city" placeholder="Enter city name" />
             </div>
 
-            <button class="btn btn-primary btn-block mt-3" (click)="searchWeather()">
-              <i class="fas fa-search"></i> Get Weather
-            </button>
+            <div class="text-center">
+              <button class="btn btn-primary btn-block mt-3 mx" (click)="searchWeather()">
+                <i class="fas fa-search"></i> Get Weather
+              </button>
+            </div>
 
             <div *ngIf="weatherData" class="mt-4">
               <h2 class="text-center">Weather for {{ displayCity }}</h2>
@@ -32,9 +34,11 @@
                 </li>
               </ul>
 
-              <button class="btn btn-success btn-block mt-3" (click)="saveWeather()">
-                <i class="fas fa-save"></i> Save Weather
-              </button>
+              <div class="text-center">
+                <button class="btn btn-success btn-block mt-3" (click)="saveWeather()">
+                  <i class="fas fa-save"></i> Save Weather
+                </button>
+              </div>
             </div>
 
             <div *ngIf="validationError" class="alert alert-warning mt-3">

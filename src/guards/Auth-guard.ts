@@ -11,12 +11,12 @@ export class AuthGuard implements CanActivate {
 
   canActivate(): Observable<boolean> | Promise<boolean> | boolean {
     if (this.userService.isAuthenticated()) {
-      return true; //Utente autenticato, consente accesso
+      return true;
     } else {
       window.alert('Per accedere a questa pagina è necessario effettuare il login.');
       
       this.router.navigate(['/login']);
-      return false; //Utente non autenticato
+      return false;
     }
   }
 }
