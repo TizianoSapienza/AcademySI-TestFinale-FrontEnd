@@ -14,12 +14,21 @@ export class WeatherService {
 
   constructor(private http: HttpClient) { }
 
+  private getHeaders() {
+    const token = localStorage.getItem('authToken');
+    return {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    };
+  }
+
   getWeather(city: string): Observable<WeatherResponse> {
-    return this.http.get<WeatherResponse>(`${this.apiUrl}/weather/current?city=${city}`);
+    const headers = this.getHeaders();
+    return this.http.get<WeatherResponse>(`${this.apiUrl}/weather/current?city=${city}`, { headers });
   }
 
   saveWeather(weather: WeatherPostDto): Observable<any> {
-    const headers = { 'Content-Type': 'application/json' };
-    return this.http.post<any>(`${environment.apiUrl}/weather/save`, weather, { headers });
+    const headers = this.getHeaders();
+    return this.http.post<any>(`${this.apiUrl}/weather/save`, weather, { headers });
   }
 }
