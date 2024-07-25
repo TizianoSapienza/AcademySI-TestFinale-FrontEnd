@@ -12,6 +12,9 @@ import {UserService} from '../../../services/user-service.service';
 })
 export class NavbarComponent implements OnInit {
 
+  logoSrc = 'clouds-and-sun.png';
+  logoAlt = 'logo';
+
   email: string | null = null;
 
   constructor(private userService: UserService, private router: Router) {
