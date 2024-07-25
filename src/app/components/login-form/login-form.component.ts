@@ -1,10 +1,10 @@
-import { CommonModule } from '@angular/common';
-import { Component, EventEmitter, Output } from '@angular/core';
-import { FormsModule, NgForm } from '@angular/forms';
-import { UserService } from '../../../services/user-service.service';
-import { Router } from '@angular/router';
-import { SignInRequest } from '../../../interfaces/signIn-Request';
-import { LocalStorageService } from '../../../services/local-storage.service';
+import {CommonModule} from '@angular/common';
+import {Component, EventEmitter, Output} from '@angular/core';
+import {FormsModule, NgForm} from '@angular/forms';
+import {UserService} from '../../../services/user-service.service';
+import {Router} from '@angular/router';
+import {SignInRequest} from '../../../interfaces/signIn-Request';
+import {LocalStorageService} from '../../../services/local-storage.service';
 
 @Component({
   selector: 'app-login-form',
@@ -14,7 +14,7 @@ import { LocalStorageService } from '../../../services/local-storage.service';
   styleUrl: './login-form.component.css'
 })
 export class LoginFormComponent {
-  signInRequest: SignInRequest = { 
+  signInRequest: SignInRequest = {
     email: '',
     password: ''
   };
@@ -24,7 +24,8 @@ export class LoginFormComponent {
 
   @Output() loginEvent: EventEmitter<string> = new EventEmitter<string>();
 
-  constructor(private userService: UserService, private localStorageService: LocalStorageService, private router: Router) {}
+  constructor(private userService: UserService, private localStorageService: LocalStorageService, private router: Router) {
+  }
 
   onLogin(form: NgForm): void {
 
@@ -41,7 +42,7 @@ export class LoginFormComponent {
 
           this.userService.setUserEmail(this.signInRequest.email);
           this.loginEvent.emit('Welcome!');
-          
+
           form.resetForm();
           this.router.navigate(['/weather']);
         },

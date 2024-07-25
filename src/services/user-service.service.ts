@@ -1,11 +1,11 @@
-import { Injectable } from '@angular/core';
-import { environment } from '../environments/environments';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { SignUpRequest } from '../interfaces/signUp-Request';
-import { BehaviorSubject, catchError, Observable, retry, tap, throwError } from 'rxjs';
-import { SignInRequest } from '../interfaces/signIn-Request';
-import { SignInResponse } from '../interfaces/signIn-Response';
-import { LocalStorageService } from './local-storage.service';
+import {Injectable} from '@angular/core';
+import {environment} from '../environments/environments';
+import {HttpClient, HttpErrorResponse} from '@angular/common/http';
+import {SignUpRequest} from '../interfaces/signUp-Request';
+import {BehaviorSubject, catchError, Observable, retry, tap, throwError} from 'rxjs';
+import {SignInRequest} from '../interfaces/signIn-Request';
+import {SignInResponse} from '../interfaces/signIn-Response';
+import {LocalStorageService} from './local-storage.service';
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +17,7 @@ export class UserService {
   userEmail$: Observable<string | null> = this.userEmailSubject.asObservable();
 
   private apiUrl = environment.apiUrl;
-  private headers = { 'content-type': 'application/json' };
+  private headers = {'content-type': 'application/json'};
 
   constructor(private http: HttpClient, private localStorageService: LocalStorageService) {
     const token = this.localStorageService.getItem('authToken');
@@ -27,14 +27,14 @@ export class UserService {
   }
 
   SignUpUser(user: SignUpRequest): Observable<SignUpRequest> {
-    return this.http.post<SignUpRequest>(`${this.apiUrl}/user/register`, user, { headers: this.headers }).pipe(
+    return this.http.post<SignUpRequest>(`${this.apiUrl}/user/register`, user, {headers: this.headers}).pipe(
       retry(2),
       catchError(this.handleError)
     );
   }
 
   SignInUser(user: SignInRequest): Observable<SignInResponse> {
-    return this.http.post<SignInResponse>(`${this.apiUrl}/user/login`, user, { headers: this.headers }).pipe(
+    return this.http.post<SignInResponse>(`${this.apiUrl}/user/login`, user, {headers: this.headers}).pipe(
       retry(2),
       catchError(this.handleError),
       tap(response => {

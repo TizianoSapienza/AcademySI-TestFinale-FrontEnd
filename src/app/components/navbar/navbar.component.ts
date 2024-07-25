@@ -1,7 +1,7 @@
-import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
-import { Router, RouterLink } from '@angular/router';
-import { UserService } from '../../../services/user-service.service';
+import {CommonModule} from '@angular/common';
+import {Component, OnInit} from '@angular/core';
+import {Router, RouterLink} from '@angular/router';
+import {UserService} from '../../../services/user-service.service';
 
 @Component({
   selector: 'app-navbar',
@@ -14,7 +14,8 @@ export class NavbarComponent implements OnInit {
 
   email: string | null = null;
 
-  constructor(private userService: UserService, private router: Router) {}
+  constructor(private userService: UserService, private router: Router) {
+  }
 
   ngOnInit(): void {
     this.userService.getUserEmail().subscribe(email => {

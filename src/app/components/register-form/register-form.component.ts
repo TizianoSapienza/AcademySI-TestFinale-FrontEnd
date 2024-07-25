@@ -1,9 +1,9 @@
-import { Component } from '@angular/core';
-import { UserService } from '../../../services/user-service.service';
-import { Router } from '@angular/router';
-import { SignUpRequest } from '../../../interfaces/signUp-Request';
-import { FormsModule, NgForm } from '@angular/forms';
-import { CommonModule } from '@angular/common';
+import {Component} from '@angular/core';
+import {UserService} from '../../../services/user-service.service';
+import {Router} from '@angular/router';
+import {SignUpRequest} from '../../../interfaces/signUp-Request';
+import {FormsModule, NgForm} from '@angular/forms';
+import {CommonModule} from '@angular/common';
 
 @Component({
   selector: 'app-register-form',
@@ -23,7 +23,8 @@ export class RegisterFormComponent {
   passwordsMatch: boolean = true;
   passwordStrength: string = '';
 
-  constructor(private userService: UserService, private router: Router) {}
+  constructor(private userService: UserService, private router: Router) {
+  }
 
   onRegister(form: NgForm): void {
 
@@ -42,8 +43,7 @@ export class RegisterFormComponent {
   }
 
   assessPasswordStrength(password: string): void {
-    const strength = this.calculatePasswordStrength(password);
-    this.passwordStrength = strength;
+    this.passwordStrength = this.calculatePasswordStrength(password);
   }
 
   private calculatePasswordStrength(password: string): string {

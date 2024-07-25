@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { WeatherService } from '../../../services/weather.service';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import { WeatherResponse } from '../../../interfaces/weather-Response';
-import { WeatherPostDto } from '../../../interfaces/weatherPostDto';
+import {Component, OnInit} from '@angular/core';
+import {WeatherService} from '../../../services/weather.service';
+import {CommonModule} from '@angular/common';
+import {FormsModule} from '@angular/forms';
+import {WeatherResponse} from '../../../interfaces/weather-Response';
+import {WeatherPostDto} from '../../../interfaces/weatherPostDto';
 
 @Component({
   selector: 'app-weather',
@@ -15,14 +15,16 @@ import { WeatherPostDto } from '../../../interfaces/weatherPostDto';
 
 export class WeatherComponent implements OnInit {
   city: string = '';
-  displayCity: string = ''; 
+  displayCity: string = '';
   weatherData: WeatherResponse | null = null;
   error: string | null = null;
   validationError: string | null = null;
 
-  constructor(private weatherService: WeatherService) { }
+  constructor(private weatherService: WeatherService) {
+  }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {
+  }
 
   searchWeather(): void {
     this.weatherService.getWeather(this.city).subscribe({
