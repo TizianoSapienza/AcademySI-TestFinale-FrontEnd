@@ -13,7 +13,7 @@ export class AuthGuard implements CanActivate {
     if (this.userService.isAuthenticated()) {
       return true;
     } else {
-      window.alert('Per accedere a questa pagina è necessario effettuare il login.');
+      window.alert('To access this page you must login.');
       
       this.router.navigate(['/login']);
       return false;

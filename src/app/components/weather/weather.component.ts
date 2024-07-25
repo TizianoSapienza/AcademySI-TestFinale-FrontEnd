@@ -15,10 +15,10 @@ import { WeatherPostDto } from '../../../interfaces/weatherPostDto';
 
 export class WeatherComponent implements OnInit {
   city: string = '';
-  displayCity: string = ''; // Variable to store the city name for display
+  displayCity: string = ''; 
   weatherData: WeatherResponse | null = null;
   error: string | null = null;
-  validationError: string | null = null; // Variable for validation error message
+  validationError: string | null = null;
 
   constructor(private weatherService: WeatherService) { }
 
@@ -28,12 +28,12 @@ export class WeatherComponent implements OnInit {
     this.weatherService.getWeather(this.city).subscribe({
       next: data => {
         this.weatherData = data;
-        this.displayCity = this.city; // Update displayCity only when data is successfully fetched
-        this.validationError = null; // Clear any previous validation errors
+        this.displayCity = this.city; //Update displayCity only when data is successfully fetched
+        this.validationError = null;
       },
       error: error => {
         this.weatherData = null;
-        this.displayCity = ''; // Clear the displayed city name
+        this.displayCity = '';
         this.validationError = 'Invalid city name or data not available. Please check the city name or try again later.';
         console.error('Error fetching weather data', error);
       }
