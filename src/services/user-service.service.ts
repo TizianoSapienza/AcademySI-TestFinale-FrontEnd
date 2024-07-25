@@ -13,29 +13,28 @@ import { LocalStorageService } from './local-storage.service';
 export class UserService {
 
   private userEmailSubject: BehaviorSubject<string | null> = new BehaviorSubject<string | null>(null);
+
   userEmail$: Observable<string | null> = this.userEmailSubject.asObservable();
 
   private apiUrl = environment.apiUrl;
+  private headers = { 'content-type': 'application/json' };
 
   constructor(private http: HttpClient, private localStorageService: LocalStorageService) {
-    // Carica l'email dell'utente se esiste un token
     const token = this.localStorageService.getItem('authToken');
     if (token) {
-      this.userEmailSubject.next(this.localStorageService.getItem('userEmail')); 
+      this.userEmailSubject.next(this.localStorageService.getItem('userEmail'));
     }
   }
 
   SignUpUser(user: SignUpRequest): Observable<SignUpRequest> {
-    const headers = { 'content-type': 'application/json' };
-    return this.http.post<SignUpRequest>(`${this.apiUrl}/user/register`, user, { headers }).pipe(
+    return this.http.post<SignUpRequest>(`${this.apiUrl}/user/register`, user, { headers: this.headers }).pipe(
       retry(2),
       catchError(this.handleError)
     );
   }
 
   SignInUser(user: SignInRequest): Observable<SignInResponse> {
-    const headers = { 'content-type': 'application/json' };
-    return this.http.post<SignInResponse>(`${this.apiUrl}/user/login`, user, { headers }).pipe(
+    return this.http.post<SignInResponse>(`${this.apiUrl}/user/login`, user, { headers: this.headers }).pipe(
       retry(2),
       catchError(this.handleError),
       tap(response => {

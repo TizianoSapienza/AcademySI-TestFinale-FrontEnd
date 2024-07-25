@@ -9,7 +9,6 @@ import { WeatherPostDto } from '../interfaces/weatherPostDto';
   providedIn: 'root'
 })
 export class WeatherService {
-
   private apiUrl = environment.apiUrl;
 
   constructor(private http: HttpClient) { }
@@ -21,7 +20,6 @@ export class WeatherService {
       'Authorization': `Bearer ${token}`
     };
   }
-
   getWeather(city: string): Observable<WeatherResponse> {
     const headers = this.getHeaders();
     return this.http.get<WeatherResponse>(`${this.apiUrl}/weather/current?city=${city}`, { headers }).pipe(
@@ -29,7 +27,6 @@ export class WeatherService {
       catchError(this.handleError)
     );
   }
-
   saveWeather(weather: WeatherPostDto): Observable<any> {
     const headers = this.getHeaders();
     return this.http.post<any>(`${this.apiUrl}/weather/save`, weather, { headers }).pipe(
@@ -37,7 +34,6 @@ export class WeatherService {
       catchError(this.handleError)
     );
   }
-
   private handleError(error: HttpErrorResponse) {
     if (error.status === 0) {
       console.error('An error occurred:', error.error);
